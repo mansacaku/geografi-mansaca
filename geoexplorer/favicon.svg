@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#087f8c" />
+      <stop offset="100%" stop-color="#06545c" />
+    </linearGradient>
+    <linearGradient id="leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48bb78" />
+      <stop offset="100%" stop-color="#2f855a" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecc94b" />
+      <stop offset="100%" stop-color="#d69e2e" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <!-- Map lines / meridian grid -->
+  <circle cx="256" cy="256" r="180" stroke="rgba(255,255,255,0.18)" stroke-width="6" fill="none" />
+  <ellipse cx="256" cy="256" rx="90" ry="180" stroke="rgba(255,255,255,0.18)" stroke-width="6" fill="none" />
+  <line x1="76" y1="256" x2="436" y2="256" stroke="rgba(255,255,255,0.18)" stroke-width="6" />
+  
+  <!-- Wallace line representation (dashed red/gold) -->
+  <path d="M 220 110 Q 250 240 230 400" stroke="#f56565" stroke-width="12" stroke-dasharray="16 10" stroke-linecap="round" />
+  
+  <!-- Compass / Pin & Leaf emblem -->
+  <circle cx="256" cy="220" r="76" fill="#ffffff" />
+  <!-- Leaf icon on left -->
+  <path d="M 256 165 C 220 165 200 200 215 235 C 230 270 256 270 256 270 C 256 270 282 270 297 235 C 312 200 292 165 256 165 Z" fill="url(#leaf)" />
+  <path d="M 256 175 L 256 265" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Animal paw print on right -->
+  <ellipse cx="360" cy="330" rx="20" ry="24" fill="url(#gold)" />
+  <circle cx="340" cy="290" r="8" fill="url(#gold)" />
+  <circle cx="360" cy="280" r="9" fill="url(#gold)" />
+  <circle cx="380" cy="290" r="8" fill="url(#gold)" />
+
+  <!-- Badge text/plate -->
+  <rect x="96" y="380" width="320" height="64" rx="24" fill="#ffffff" />
+  <text x="256" y="424" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="34" fill="#087f8c" letter-spacing="2">GEOEXPLORER</text>
+</svg>

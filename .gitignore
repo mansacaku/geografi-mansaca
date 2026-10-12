@@ -1,0 +1,12 @@
+# Deployment artifacts
+*.zip
+*.tar.gz
+
+# Preview screenshots (hold locally, kept out of source)
+preview/
+
+# OS / editor junk
+Thumbs.db
+Desktop.ini
+._*
+*.log

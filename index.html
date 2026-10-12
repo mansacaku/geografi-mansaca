@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beranda · Geosfer</title>
+<meta name="description" content="Hub belajar Geografi SMA/MA: alur tiga langkah, peta persebaran, bank soal ber-anchor peta, dan glosarium. Ringan, siap offline, tanpa akun.">
+<meta name="theme-color" content="#f4fbfc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi utama</a>
+
+<header class="appbar">
+  <div class="wrap appbar-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" role="img" aria-label="Lambang Geosfer">
+        <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M1.9 14.6h20.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 1.6c3.4 4.3 3.4 16.5 0 20.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+      </svg>
+      <span>
+        <span class="brand-name">Geosfer</span>
+        <span class="brand-sub">ruang belajar geografi</span>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navigasi utama">
+      <a data-nav="beranda" href="index.html">Beranda</a>
+      <a data-nav="modul" href="modul.html">Modul</a>
+      <a data-nav="latihan" href="latihan.html">Latihan</a>
+      <a data-nav="progres" href="progres.html">Progres</a>
+      <a data-nav="glosarium" href="glosarium.html">Glosarium</a>
+    </nav>
+    <div class="appbar-tools">
+      <button class="btn btn-primary btn-sm" id="install" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i>Pasang</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="banner" id="banner-offline" hidden><i class="ph ph-wifi-slash" aria-hidden="true"></i><span>Sedang offline. Materi yang sudah tersimpan tetap bisa dibuka.</span></p>
+  <p class="banner" id="install-hint" hidden style="margin-top:12px"><i class="ph ph-info" aria-hidden="true"></i><span>Di Android buka menu peramban lalu pilih Tambahkan ke layar utama. Di iPhone tekan Bagikan lalu Tambahkan ke Layar Utama.</span></p>
+</div>
+
+<main id="konten">
+  <section class="wrap">
+    <div class="sect" style="padding-top:8px">
+      <div class="grid grid-2" style="align-items:center;gap:32px">
+        <div>
+          <h1 style="font-size:clamp(1.9rem,7.6vw,3.1rem);max-width:18ch">Belajar Geografi tanpa bikin pusing.</h1>
+          <p class="muted" style="margin-top:16px;font-size:clamp(1rem,3.7vw,1.12rem);max-width:46ch">Tiga langkah saja: pilih topik, telusuri petanya, lalu kerjakan soal. Sisanya berulang sampai kamu paham.</p>
+          <div class="btn-row" style="margin-top:24px">
+            <a class="btn btn-primary" href="#alur">Mulai langkah pertama</a>
+            <a class="btn btn-quiet" href="modul.html">Lihat modul</a>
+          </div>
+        </div>
+        <div class="card" id="kartu-lanjut" aria-live="polite">
+          <div class="card-head"><span class="card-ico"><i class="ph ph-hourglass-medium" aria-hidden="true"></i></span><span class="card-name">Lanjutkan belajar</span></div>
+          <p id="lanjut-teks">Memuat riwayat di perangkat ini.</p>
+          <div class="card-foot" id="lanjut-aksi"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sect" id="alur">
+    <div class="sect-hd">
+      <h2>Cara pakai, tiga langkah</h2>
+      <p>Urutan ini tetap supaya kamu tidak bingung harus mulai dari mana.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="step-no">1</span>
+        <h3>Pilih topik</h3>
+        <p>Mulai dari lapisan yang sedang dibahas di kelas: litosfer, atmosfer, hidrosfer, biosfer, atau antroposfer.</p>
+        <a class="row-go" href="modul.html">Lihat topik <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      </article>
+      <article class="step">
+        <span class="step-no">2</span>
+        <h3>Telusuri petanya</h3>
+        <p>Setiap topik punya peta. Geser, perbesar, dan nyalakan layer sampai kamu melihat polanya.</p>
+        <a class="row-go" href="modul-peta.html">Buka peta <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      </article>
+      <article class="step">
+        <span class="step-no">3</span>
+        <h3>Kerjakan dan ulangi</h3>
+        <p>Soal menempel pada peta tadi. Setelah selesai, baca bagian mana yang masih perlu diulang.</p>
+        <a class="row-go" href="latihan.html">Mulai soal <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap sect">
+    <div class="sect-hd">
+      <h2>Modul yang sudah bisa dibuka</h2>
+      <p>Tiga modul sudah berjalan penuh. Sisanya masih disusun dan ditandai jujur.</p>
+    </div>
+    <div class="grid grid-3" id="modul-ringkas"></div>
+    <div class="btn-row" style="margin-top:24px">
+      <a class="btn btn-quiet" href="modul.html">Lihat semua modul</a>
+    </div>
+  </section>
+
+  <section class="wrap sect">
+    <div class="card" style="background:var(--accent-soft);border-color:var(--accent-soft-2);gap:16px">
+      <h2 style="font-size:1.25rem">Kenapa tetap jalan di kelas bersinyal lemah</h2>
+      <div class="grid grid-3" style="gap:16px">
+        <div><p style="font-weight:700;color:var(--ink)">Siap offline</p><p class="muted" style="font-size:14px">Modul inti tersimpan di perangkat dan tetap terbuka.</p></div>
+        <div><p style="font-weight:700;color:var(--ink)">Mobile lebih dulu</p><p class="muted" style="font-size:14px">Disusun untuk layar kecil, bukan dipadatkan dari desktop.</p></div>
+        <div><p style="font-weight:700;color:var(--ink)">Tanpa akun</p><p class="muted" style="font-size:14px">Progres belajar disimpan di perangkat ini saja.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div>
+      <p class="ftr-name">Geosfer</p>
+      <p class="ftr-note">Hub belajar Geografi untuk SMA dan MA, mengikuti Kurikulum Merdeka fase E dan fase F.</p>
+    </div>
+    <nav class="ftr-links" aria-label="Tautan kaki">
+      <a href="modul.html">Modul</a>
+      <a href="latihan.html">Latihan</a>
+      <a href="progres.html">Progres</a>
+      <a href="glosarium.html">Glosarium</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<nav class="tabbar" aria-label="Navigasi bawah">
+  <ul>
+    <li><a data-nav="beranda" href="index.html"><i class="ph ph-house" aria-hidden="true"></i>Beranda</a></li>
+    <li><a data-nav="modul" href="modul.html"><i class="ph ph-squares-four" aria-hidden="true"></i>Modul</a></li>
+    <li><a data-nav="latihan" href="latihan.html"><i class="ph ph-exam" aria-hidden="true"></i>Latihan</a></li>
+    <li><a data-nav="progres" href="progres.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Progres</a></li>
+    <li><a data-nav="glosarium" href="glosarium.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Glosarium</a></li>
+  </ul>
+</nav>
+
+<script src="data/modul.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var elMods = document.getElementById('modul-ringkas');
+  var mods = (window.GEOSFER_MODUL || []).filter(function (m) { return m.status === 'siap'; });
+  mods.forEach(function (m) {
+    var a = document.createElement('article');
+    a.className = 'card';
+    a.innerHTML =
+      '<div class="card-head"><span class="card-ico"><i class="ph ' + m.ikon + '" aria-hidden="true"></i></span>' +
+      '<span class="card-name">' + m.nama + '</span></div>' +
+      '<p>' + m.ringkas + '</p>' +
+      '<div class="card-foot"><span class="tag">' + m.fase + '</span></div>' +
+      '<a class="row-go" href="' + m.href + '">Buka modul <i class="ph ph-arrow-right" aria-hidden="true"></i></a>';
+    elMods.appendChild(a);
+  });
+
+  /* Kartu lanjutkan, dibaca dari progres di perangkat. */
+  var d = GE.baca();
+  var teks = document.getElementById('lanjut-teks');
+  var aksi = document.getElementById('lanjut-aksi');
+  var ico = document.querySelector('#kartu-lanjut .card-ico i');
+  if (!d.riwayat.length) {
+    teks.textContent = 'Belum ada riwayat di perangkat ini. Begitu kamu menyelesaikan satu latihan, ringkasannya muncul di sini.';
+    aksi.innerHTML = '<a class="btn btn-primary btn-sm" href="latihan.html">Mulai latihan pertama</a>';
+  } else {
+    var ter = d.riwayat[0];
+    var p = GE.persen(ter.benar, ter.total);
+    teks.innerHTML = 'Latihan terakhir ' + GE.tanggal(ter.ts) + ': <b>' + ter.benar + ' benar dari ' + ter.total +
+      ' soal (' + p + '%)</b>.';
+    aksi.innerHTML = '<a class="btn btn-primary btn-sm" href="latihan.html">Latihan lagi</a>' +
+      '<a class="btn btn-quiet btn-sm" href="progres.html">Lihat progres</a>';
+    if (ico) ico.className = 'ph ph-chart-line-up';
+  }
+})();
+</script>
+</body>
+</html>

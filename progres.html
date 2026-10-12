@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Progres · Geosfer</title>
+<meta name="description" content="Rekap hasil latihan Geografi per kompetensi, riwayat pengerjaan, dan ekspor berkas untuk penilaian guru.">
+<meta name="theme-color" content="#f4fbfc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi utama</a>
+
+<header class="appbar">
+  <div class="wrap appbar-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" role="img" aria-label="Lambang Geosfer">
+        <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M1.9 14.6h20.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 1.6c3.4 4.3 3.4 16.5 0 20.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+      </svg>
+      <span>
+        <span class="brand-name">Geosfer</span>
+        <span class="brand-sub">ruang belajar geografi</span>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navigasi utama">
+      <a data-nav="beranda" href="index.html">Beranda</a>
+      <a data-nav="modul" href="modul.html">Modul</a>
+      <a data-nav="latihan" href="latihan.html">Latihan</a>
+      <a data-nav="progres" href="progres.html">Progres</a>
+      <a data-nav="glosarium" href="glosarium.html">Glosarium</a>
+    </nav>
+    <div class="appbar-tools">
+      <button class="btn btn-primary btn-sm" id="install" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i>Pasang</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="banner" id="banner-offline" hidden><i class="ph ph-wifi-slash" aria-hidden="true"></i><span>Sedang offline. Riwayat di perangkat tetap bisa dibuka.</span></p>
+  <p class="banner" id="install-hint" hidden style="margin-top:12px"><i class="ph ph-info" aria-hidden="true"></i><span>Di Android buka menu peramban lalu pilih Tambahkan ke layar utama. Di iPhone tekan Bagikan lalu Tambahkan ke Layar Utama.</span></p>
+</div>
+
+<main id="konten">
+  <section class="wrap sect" style="padding-top:20px">
+    <div class="sect-hd">
+      <h1 style="font-size:clamp(1.6rem,6vw,2.3rem)">Progres</h1>
+      <p>Semua hasil disimpan di perangkat ini, tanpa akun dan tanpa dikirim ke mana pun.</p>
+    </div>
+
+    <!-- Keadaan kosong -->
+    <div id="progres-kosong" hidden>
+      <div class="empty">
+        <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+        <h3>Belum ada hasil latihan</h3>
+        <p>Kerjakan satu latihan lebih dulu. Setelah itu rekap per kompetensi dan riwayatnya muncul di halaman ini.</p>
+        <a class="btn btn-primary btn-sm" href="latihan.html">Mulai latihan</a>
+      </div>
+    </div>
+
+    <!-- Keadaan terisi -->
+    <div id="progres-isi" hidden style="display:grid;gap:24px">
+      <div class="card" style="gap:16px">
+        <div class="stat">
+          <span class="stat-num" id="p-akurasi">0%</span>
+          <span class="stat-cap"><b id="p-benar">0 benar</b> dari <span id="p-total">0 soal</span> · <span id="p-sesi">0 sesi</span></span>
+        </div>
+        <p class="muted" style="font-size:14px">Terakhir dikerjakan: <span id="p-terakhir">-</span></p>
+      </div>
+
+      <div class="card" style="gap:12px">
+        <h2 style="font-size:1.15rem">Per kompetensi</h2>
+        <p class="muted" style="font-size:14px">Diurutkan dari yang paling perlu diulang.</p>
+        <div id="p-kompetensi"></div>
+      </div>
+
+      <div class="card" style="gap:12px">
+        <h2 style="font-size:1.15rem">Riwayat latihan</h2>
+        <div class="rows" id="p-riwayat"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" type="button" id="btn-ekspor"><i class="ph ph-export" aria-hidden="true"></i>Ekspor rekap (CSV)</button>
+        <button class="btn btn-danger" type="button" id="btn-hapus"><i class="ph ph-trash" aria-hidden="true"></i>Hapus riwayat</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="dlg-hapus" aria-labelledby="dlg-judul">
+  <div class="dlg-in">
+    <div class="dlg-hd">
+      <h2 id="dlg-judul">Hapus seluruh riwayat?</h2>
+      <button class="dlg-close" type="button" id="dlg-tutup" aria-label="Tutup"><i class="ph ph-x" aria-hidden="true"></i></button>
+    </div>
+    <p class="muted">Semua hasil latihan di perangkat ini akan dihapus. Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="dlg-foot">
+      <button class="btn btn-danger" type="button" id="dlg-hapus-ya">Ya, hapus semua</button>
+      <button class="btn btn-quiet" type="button" id="dlg-batal">Batal</button>
+    </div>
+  </div>
+</dialog>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div>
+      <p class="ftr-name">Geosfer</p>
+      <p class="ftr-note">Hub belajar Geografi untuk SMA dan MA, mengikuti Kurikulum Merdeka fase E dan fase F.</p>
+    </div>
+    <nav class="ftr-links" aria-label="Tautan kaki">
+      <a href="modul.html">Modul</a>
+      <a href="latihan.html">Latihan</a>
+      <a href="progres.html">Progres</a>
+      <a href="glosarium.html">Glosarium</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<nav class="tabbar" aria-label="Navigasi bawah">
+  <ul>
+    <li><a data-nav="beranda" href="index.html"><i class="ph ph-house" aria-hidden="true"></i>Beranda</a></li>
+    <li><a data-nav="modul" href="modul.html"><i class="ph ph-squares-four" aria-hidden="true"></i>Modul</a></li>
+    <li><a data-nav="latihan" href="latihan.html"><i class="ph ph-exam" aria-hidden="true"></i>Latihan</a></li>
+    <li><a data-nav="progres" href="progres.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Progres</a></li>
+    <li><a data-nav="glosarium" href="glosarium.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Glosarium</a></li>
+  </ul>
+</nav>
+
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var dlg = document.getElementById('dlg-hapus');
+
+  function gambar() {
+    var d = GE.baca();
+    var kosong = document.getElementById('progres-kosong');
+    var isi = document.getElementById('progres-isi');
+    if (!d.riwayat.length) {
+      kosong.hidden = false; isi.hidden = true;
+      return;
+    }
+    kosong.hidden = true; isi.hidden = false;
+
+    var benar = 0, total = 0;
+    d.riwayat.forEach(function (r) { benar += r.benar; total += r.total; });
+    document.getElementById('p-akurasi').textContent = GE.persen(benar, total) + '%';
+    document.getElementById('p-benar').textContent = benar + ' benar';
+    document.getElementById('p-total').textContent = total + ' soal';
+    document.getElementById('p-sesi').textContent = d.riwayat.length + ' sesi';
+    document.getElementById('p-terakhir').textContent = GE.tanggal(d.terakhir);
+
+    var box = document.getElementById('p-kompetensi');
+    box.innerHTML = '';
+    var nama = Object.keys(d.kompetensi);
+    nama.sort(function (a, b) {
+      return GE.persen(d.kompetensi[a].benar, d.kompetensi[a].total) - GE.persen(d.kompetensi[b].benar, d.kompetensi[b].total);
+    });
+    nama.forEach(function (n) {
+      var v = d.kompetensi[n];
+      var p = GE.persen(v.benar, v.total);
+      var row = document.createElement('div');
+      row.className = 'meter-row';
+      row.innerHTML =
+        '<div class="meter-top"><span class="meter-name">' + n + '</span>' +
+        '<span class="meter-val">' + v.benar + '/' + v.total + ' benar · ' + p + '%</span></div>' +
+        '<div class="meter" role="img" aria-label="' + n + ': ' + p + ' persen benar">' +
+        '<span class="meter-fill" data-level="' + (p >= 75 ? 'ok' : (p >= 50 ? '' : 'warn')) + '" style="width:' + p + '%"></span></div>';
+      box.appendChild(row);
+    });
+
+    var rl = document.getElementById('p-riwayat');
+    rl.innerHTML = '';
+    d.riwayat.slice(0, 10).forEach(function (r) {
+      var row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML =
+        '<div><p class="row-name">' + r.benar + ' benar dari ' + r.total + ' soal</p>' +
+        '<p class="muted" style="font-size:14px">' + GE.tanggal(r.ts) + ' · ' +
+        (r.mode === 'kilat' ? 'Kuis kilat' : 'Latihan') + '</p></div>' +
+        '<p class="meter-val">' + GE.persen(r.benar, r.total) + '%</p>';
+      rl.appendChild(row);
+    });
+  }
+
+  function ekspor() {
+    var d = GE.baca();
+    if (!d.riwayat.length) { GE.pesan('Belum ada riwayat untuk diekspor.'); return; }
+    var baris = [['Tanggal', 'Mode', 'Benar', 'Total', 'Persen']];
+    d.riwayat.forEach(function (r) {
+      baris.push([GE.tanggal(r.ts), r.mode === 'kilat' ? 'Kuis kilat' : 'Latihan', r.benar, r.total, GE.persen(r.benar, r.total) + '%']);
+    });
+    baris.push([]);
+    baris.push(['Rekap per kompetensi']);
+    baris.push(['Kompetensi', 'Benar', 'Total', 'Persen']);
+    Object.keys(d.kompetensi).sort().forEach(function (k) {
+      var v = d.kompetensi[k];
+      baris.push([k, v.benar, v.total, GE.persen(v.benar, v.total) + '%']);
+    });
+    var csv = '\ufeff' + baris.map(function (r) {
+      return r.map(function (c) { return '"' + String(c === undefined ? '' : c).replace(/"/g, '""') + '"'; }).join(',');
+    }).join('\r\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'geosfer-progres-' + new Date().toISOString().slice(0, 10) + '.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    GE.pesan('Berkas rekap diunduh.');
+  }
+
+  document.getElementById('btn-ekspor').addEventListener('click', ekspor);
+  document.getElementById('btn-hapus').addEventListener('click', function () { dlg.showModal(); });
+  document.getElementById('dlg-tutup').addEventListener('click', function () { dlg.close(); });
+  document.getElementById('dlg-batal').addEventListener('click', function () { dlg.close(); });
+  document.getElementById('dlg-hapus-ya').addEventListener('click', function () {
+    GE.hapusProgres();
+    dlg.close();
+    gambar();
+    GE.pesan('Riwayat di perangkat sudah dihapus.');
+  });
+
+  gambar();
+})();
+</script>
+</body>
+</html>

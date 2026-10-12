@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan · Geosfer</title>
+<meta name="description" content="Latihan soal Geografi SMA/MA dengan pembahasan dan rekap hasil per kompetensi.">
+<meta name="theme-color" content="#f4fbfc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi utama</a>
+
+<header class="appbar">
+  <div class="wrap appbar-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" role="img" aria-label="Lambang Geosfer">
+        <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M1.9 14.6h20.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 1.6c3.4 4.3 3.4 16.5 0 20.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+      </svg>
+      <span>
+        <span class="brand-name">Geosfer</span>
+        <span class="brand-sub">ruang belajar geografi</span>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navigasi utama">
+      <a data-nav="beranda" href="index.html">Beranda</a>
+      <a data-nav="modul" href="modul.html">Modul</a>
+      <a data-nav="latihan" href="latihan.html">Latihan</a>
+      <a data-nav="progres" href="progres.html">Progres</a>
+      <a data-nav="glosarium" href="glosarium.html">Glosarium</a>
+    </nav>
+    <div class="appbar-tools">
+      <button class="btn btn-primary btn-sm" id="install" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i>Pasang</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="banner" id="banner-offline" hidden><i class="ph ph-wifi-slash" aria-hidden="true"></i><span>Sedang offline. Soal yang sudah tersimpan tetap bisa dikerjakan.</span></p>
+  <p class="banner" id="install-hint" hidden style="margin-top:12px"><i class="ph ph-info" aria-hidden="true"></i><span>Di Android buka menu peramban lalu pilih Tambahkan ke layar utama. Di iPhone tekan Bagikan lalu Tambahkan ke Layar Utama.</span></p>
+</div>
+
+<main id="konten">
+  <section class="wrap sect" style="padding-top:20px">
+    <div class="sect-hd">
+      <h1 style="font-size:clamp(1.6rem,6vw,2.3rem)">Latihan</h1>
+      <p id="mode-judul">Pilih topik dan jumlah soal, lalu mulai. Setiap jawaban langsung diberi pembahasan.</p>
+    </div>
+
+    <!-- Keadaan 1: menyiapkan latihan -->
+    <div id="kuis-setup" class="card" style="gap:20px" hidden>
+      <div class="field">
+        <span class="label" id="label-topik">Topik</span>
+        <div class="chips" id="pilih-topik" role="group" aria-labelledby="label-topik"></div>
+        <p class="help">Pilih satu topik, atau kerjakan semua topik secara acak.</p>
+      </div>
+      <div class="field">
+        <label for="pilih-jumlah">Jumlah soal</label>
+        <select class="input" id="pilih-jumlah">
+          <option value="5">5 soal</option>
+          <option value="10" selected>10 soal</option>
+          <option value="semua">Semua soal yang tersedia</option>
+        </select>
+      </div>
+      <div class="card-foot">
+        <button class="btn btn-primary" type="button" id="btn-mulai"><i class="ph ph-play" aria-hidden="true"></i>Mulai latihan</button>
+      </div>
+    </div>
+
+    <!-- Keadaan 2: memuat bank soal -->
+    <div id="kuis-loading" hidden>
+      <p class="muted" role="status">Menyiapkan soal dari bank soal yang tersimpan di perangkat.</p>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="skel-card"><div class="skel" style="width:40%"></div><div class="skel" style="height:22px"></div><div class="skel" style="width:80%"></div><div class="skel" style="width:65%"></div></div>
+        <div class="skel-card"><div class="skel" style="width:40%"></div><div class="skel" style="height:22px"></div><div class="skel" style="width:80%"></div><div class="skel" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <!-- Keadaan 3: mengerjakan -->
+    <div id="kuis-main" hidden>
+      <div class="card" style="gap:18px">
+        <div>
+          <div class="meter" style="margin-bottom:8px"><span class="meter-fill" id="soal-meter" style="width:0%"></span></div>
+          <p class="muted" id="soal-progres" style="font-size:14px" role="status">Soal 1 dari 1</p>
+        </div>
+        <div class="qmeta" id="soal-meta"></div>
+        <p class="qask" id="soal-pertanyaan"></p>
+        <div id="soal-opsi" role="group" aria-label="Pilihan jawaban" style="display:grid;gap:10px"></div>
+        <div class="fb" id="soal-fb" hidden aria-live="polite"></div>
+        <div class="card-foot">
+          <button class="btn btn-primary" type="button" id="btn-lanjut" hidden>Soal berikutnya</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keadaan 4: hasil -->
+    <div id="kuis-hasil" hidden>
+      <div class="card" style="gap:20px">
+        <div>
+          <p class="label">Hasil latihan</p>
+          <p class="stat" style="margin-top:6px">
+            <span class="stat-num" id="hasil-skor">0%</span>
+            <span class="stat-cap"><b id="hasil-benar">0 benar</b> · <span id="hasil-salah">0 salah</span> · <span id="hasil-total">0 soal</span></span>
+          </p>
+        </div>
+        <div>
+          <p class="label">Per kompetensi</p>
+          <div id="hasil-kompetensi" style="margin-top:8px"></div>
+        </div>
+        <p class="fb" id="hasil-saran" style="border-left-color:var(--accent)"></p>
+        <div class="card-foot">
+          <button class="btn btn-primary" type="button" id="btn-ulangi"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>Latihan lagi</button>
+          <button class="btn btn-quiet" type="button" id="btn-ke-progres"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Lihat progres</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keadaan 5: bank soal kosong atau gagal dimuat -->
+    <div id="kuis-error" hidden>
+      <div class="empty">
+        <i class="ph ph-warning-circle" aria-hidden="true"></i>
+        <h3>Bank soal belum bisa dimuat</h3>
+        <p>Berkas soal tidak ditemukan di perangkat ini. Muat ulang halaman saat ada koneksi, lalu coba lagi.</p>
+        <button class="btn btn-primary btn-sm" type="button" onclick="location.reload()">Muat ulang halaman</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div>
+      <p class="ftr-name">Geosfer</p>
+      <p class="ftr-note">Hub belajar Geografi untuk SMA dan MA, mengikuti Kurikulum Merdeka fase E dan fase F.</p>
+    </div>
+    <nav class="ftr-links" aria-label="Tautan kaki">
+      <a href="modul.html">Modul</a>
+      <a href="latihan.html">Latihan</a>
+      <a href="progres.html">Progres</a>
+      <a href="glosarium.html">Glosarium</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<nav class="tabbar" aria-label="Navigasi bawah">
+  <ul>
+    <li><a data-nav="beranda" href="index.html"><i class="ph ph-house" aria-hidden="true"></i>Beranda</a></li>
+    <li><a data-nav="modul" href="modul.html"><i class="ph ph-squares-four" aria-hidden="true"></i>Modul</a></li>
+    <li><a data-nav="latihan" href="latihan.html"><i class="ph ph-exam" aria-hidden="true"></i>Latihan</a></li>
+    <li><a data-nav="progres" href="progres.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Progres</a></li>
+    <li><a data-nav="glosarium" href="glosarium.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Glosarium</a></li>
+  </ul>
+</nav>
+
+<script src="data/soal.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/quiz.js"></script>
+</body>
+</html>

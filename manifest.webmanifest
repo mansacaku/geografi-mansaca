@@ -1,0 +1,16 @@
+{
+  "name": "Geosfer · Ruang belajar Geografi SMA/MA",
+  "short_name": "Geosfer",
+  "description": "Hub belajar Geografi SMA/MA: alur tiga langkah, peta persebaran, bank soal ber-anchor peta, rekap per kompetensi, dan glosarium.",
+  "lang": "id",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4fbfc",
+  "theme_color": "#f4fbfc",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

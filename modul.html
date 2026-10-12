@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul · Geosfer</title>
+<meta name="description" content="Daftar modul Geosfer: peta persebaran, bank soal, kuis kilat, lab spasial, LKPD cetak, dan glosarium.">
+<meta name="theme-color" content="#f4fbfc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi utama</a>
+
+<header class="appbar">
+  <div class="wrap appbar-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" role="img" aria-label="Lambang Geosfer">
+        <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M1.9 14.6h20.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 1.6c3.4 4.3 3.4 16.5 0 20.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+      </svg>
+      <span>
+        <span class="brand-name">Geosfer</span>
+        <span class="brand-sub">ruang belajar geografi</span>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navigasi utama">
+      <a data-nav="beranda" href="index.html">Beranda</a>
+      <a data-nav="modul" href="modul.html">Modul</a>
+      <a data-nav="latihan" href="latihan.html">Latihan</a>
+      <a data-nav="progres" href="progres.html">Progres</a>
+      <a data-nav="glosarium" href="glosarium.html">Glosarium</a>
+    </nav>
+    <div class="appbar-tools">
+      <button class="btn btn-primary btn-sm" id="install" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i>Pasang</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="banner" id="banner-offline" hidden><i class="ph ph-wifi-slash" aria-hidden="true"></i><span>Sedang offline. Materi yang sudah tersimpan tetap bisa dibuka.</span></p>
+  <p class="banner" id="install-hint" hidden style="margin-top:12px"><i class="ph ph-info" aria-hidden="true"></i><span>Di Android buka menu peramban lalu pilih Tambahkan ke layar utama. Di iPhone tekan Bagikan lalu Tambahkan ke Layar Utama.</span></p>
+</div>
+
+<main id="konten">
+  <section class="wrap sect" style="padding-top:24px">
+    <div class="sect-hd">
+      <h1 style="font-size:clamp(1.7rem,6.4vw,2.4rem)">Modul</h1>
+      <p>Enam modul untuk satu putaran belajar. Saring menurut lapisan kajian atau fase kurikulum.</p>
+    </div>
+
+    <div style="display:grid;gap:12px;margin-bottom:24px">
+      <div>
+        <p class="label" id="label-lapisan">Lapisan kajian</p>
+        <div class="chips" id="filter-lapisan" role="group" aria-labelledby="label-lapisan" style="margin-top:8px"></div>
+      </div>
+      <div>
+        <p class="label" id="label-fase">Fase</p>
+        <div class="chips" id="filter-fase" role="group" aria-labelledby="label-fase" style="margin-top:8px"></div>
+      </div>
+    </div>
+
+    <p class="muted" id="modul-hitung" role="status" style="font-size:14.5px"></p>
+    <div class="grid grid-3" id="modul-grid" style="margin-top:16px"></div>
+    <div id="modul-kosong" hidden style="margin-top:16px">
+      <div class="empty">
+        <i class="ph ph-funnel" aria-hidden="true"></i>
+        <h3>Tidak ada modul untuk saringan ini</h3>
+        <p>Coba pilih lapisan lain, atau kembalikan saringan ke semua.</p>
+        <button class="btn btn-primary btn-sm" type="button" id="reset-filter">Tampilkan semua modul</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div>
+      <p class="ftr-name">Geosfer</p>
+      <p class="ftr-note">Hub belajar Geografi untuk SMA dan MA, mengikuti Kurikulum Merdeka fase E dan fase F.</p>
+    </div>
+    <nav class="ftr-links" aria-label="Tautan kaki">
+      <a href="modul.html">Modul</a>
+      <a href="latihan.html">Latihan</a>
+      <a href="progres.html">Progres</a>
+      <a href="glosarium.html">Glosarium</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<nav class="tabbar" aria-label="Navigasi bawah">
+  <ul>
+    <li><a data-nav="beranda" href="index.html"><i class="ph ph-house" aria-hidden="true"></i>Beranda</a></li>
+    <li><a data-nav="modul" href="modul.html"><i class="ph ph-squares-four" aria-hidden="true"></i>Modul</a></li>
+    <li><a data-nav="latihan" href="latihan.html"><i class="ph ph-exam" aria-hidden="true"></i>Latihan</a></li>
+    <li><a data-nav="progres" href="progres.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Progres</a></li>
+    <li><a data-nav="glosarium" href="glosarium.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Glosarium</a></li>
+  </ul>
+</nav>
+
+<script src="data/modul.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var MOD = window.GEOSFER_MODUL || [];
+  var f = { lapisan: 'Semua', fase: 'Semua' };
+
+  function unik(field) {
+    var set = ['Semua'];
+    MOD.forEach(function (m) { if (set.indexOf(m[field]) === -1) set.push(m[field]); });
+    return set;
+  }
+
+  function bangunFilter(id, field) {
+    var box = document.getElementById(id);
+    unik(field).forEach(function (nilai) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = nilai;
+      b.setAttribute('aria-pressed', nilai === 'Semua' ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        f[field] = nilai;
+        GE.els('.chip', box).forEach(function (x) {
+          x.setAttribute('aria-pressed', x.textContent === nilai ? 'true' : 'false');
+        });
+        gambar();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function cocok(m) {
+    return (f.lapisan === 'Semua' || m.lapisan === f.lapisan) &&
+           (f.fase === 'Semua' || m.fase === f.fase);
+  }
+
+  function gambar() {
+    var grid = document.getElementById('modul-grid');
+    var list = MOD.filter(cocok);
+    grid.innerHTML = '';
+    document.getElementById('modul-kosong').hidden = list.length > 0;
+    document.getElementById('modul-hitung').textContent =
+      list.length + ' dari ' + MOD.length + ' modul ditampilkan.';
+
+    list.forEach(function (m) {
+      var a = document.createElement('article');
+      a.className = 'card';
+      var status = m.status === 'siap'
+        ? '<span class="tag tag-ok">Siap dipakai</span>'
+        : '<span class="tag tag-warn">Segera</span>';
+      var aksi = m.status === 'siap'
+        ? '<a class="row-go" href="' + m.href + '">Buka modul <i class="ph ph-arrow-right" aria-hidden="true"></i></a>'
+        : '<p class="muted" style="font-size:14px">' + m.catatan + '</p>' +
+          '<button class="btn btn-quiet btn-sm" type="button" disabled aria-disabled="true">Belum bisa dibuka</button>';
+      a.innerHTML =
+        '<div class="card-head"><span class="card-ico"><i class="ph ' + m.ikon + '" aria-hidden="true"></i></span>' +
+        '<span class="card-name">' + m.nama + '</span></div>' +
+        '<p>' + m.ringkas + '</p>' +
+        '<div class="card-foot"><span class="tag tag-quiet">' + m.lapisan + '</span>' +
+        '<span class="tag">' + m.fase + '</span>' + status + '</div>' + aksi;
+      grid.appendChild(a);
+    });
+  }
+
+  bangunFilter('filter-lapisan', 'lapisan');
+  bangunFilter('filter-fase', 'fase');
+  document.getElementById('reset-filter').addEventListener('click', function () {
+    f.lapisan = 'Semua'; f.fase = 'Semua';
+    GE.els('#filter-lapisan .chip').forEach(function (x) {
+      x.setAttribute('aria-pressed', x.textContent === 'Semua' ? 'true' : 'false');
+    });
+    GE.els('#filter-fase .chip').forEach(function (x) {
+      x.setAttribute('aria-pressed', x.textContent === 'Semua' ? 'true' : 'false');
+    });
+    gambar();
+  });
+  gambar();
+})();
+</script>
+</body>
+</html>

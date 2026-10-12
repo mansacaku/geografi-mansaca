@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peta Persebaran · Geosfer</title>
+<meta name="description" content="Peta skematis persebaran flora dan fauna Indonesia: wilayah Oriental, Peralihan, Australis, serta garis Wallace dan Weber.">
+<meta name="theme-color" content="#f4fbfc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi utama</a>
+
+<header class="appbar">
+  <div class="wrap appbar-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" role="img" aria-label="Lambang Geosfer">
+        <circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M1.9 14.6h20.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 1.6c3.4 4.3 3.4 16.5 0 20.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/>
+      </svg>
+      <span>
+        <span class="brand-name">Geosfer</span>
+        <span class="brand-sub">ruang belajar geografi</span>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navigasi utama">
+      <a data-nav="beranda" href="index.html">Beranda</a>
+      <a data-nav="modul" href="modul.html">Modul</a>
+      <a data-nav="latihan" href="latihan.html">Latihan</a>
+      <a data-nav="progres" href="progres.html">Progres</a>
+      <a data-nav="glosarium" href="glosarium.html">Glosarium</a>
+    </nav>
+    <div class="appbar-tools">
+      <button class="btn btn-primary btn-sm" id="install" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i>Pasang</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="banner" id="banner-offline" hidden><i class="ph ph-wifi-slash" aria-hidden="true"></i><span>Sedang offline. Materi yang sudah tersimpan tetap bisa dibuka.</span></p>
+  <p class="banner" id="install-hint" hidden style="margin-top:12px"><i class="ph ph-info" aria-hidden="true"></i><span>Di Android buka menu peramban lalu pilih Tambahkan ke layar utama. Di iPhone tekan Bagikan lalu Tambahkan ke Layar Utama.</span></p>
+</div>
+
+<main id="konten">
+  <section class="wrap sect" style="padding-top:20px">
+    <a class="backbtn" href="modul.html"><i class="ph ph-arrow-left" aria-hidden="true"></i>Kembali ke Modul</a>
+
+    <div class="sect-hd" style="margin-top:20px">
+      <h1 style="font-size:clamp(1.6rem,6vw,2.3rem)">Peta Persebaran</h1>
+      <p>Ketuk salah satu wilayah untuk melihat cirinya. Nyalakan atau matikan garis pemisah lewat tombol di bawah peta.</p>
+      <p class="banner" style="margin-top:12px"><i class="ph ph-ruler" aria-hidden="true"></i><span>Peta ini skematis dan tidak berskala. Tujuannya menunjukkan urutan wilayah dan letak garis pemisah, bukan bentuk pulau yang presisi.</span></p>
+    </div>
+
+    <div class="chips" role="group" aria-label="Layer peta" style="margin-bottom:16px">
+      <button class="chip" type="button" data-toggle="oriental" aria-pressed="true">Wilayah Oriental</button>
+      <button class="chip" type="button" data-toggle="peralihan" aria-pressed="true">Wilayah Peralihan</button>
+      <button class="chip" type="button" data-toggle="australis" aria-pressed="true">Wilayah Australis</button>
+      <button class="chip" type="button" data-toggle="wallace" aria-pressed="true">Garis Wallace</button>
+      <button class="chip" type="button" data-toggle="weber" aria-pressed="true">Garis Weber</button>
+    </div>
+
+    <div class="mapwrap">
+      <svg id="peta" viewBox="0 0 800 400" role="group" aria-label="Peta skematis persebaran flora dan fauna Indonesia">
+        <rect x="0" y="0" width="800" height="400" fill="oklch(97% 0.02 210)"/>
+
+        <g class="zone" data-zone="oriental" data-on="true" tabindex="0" role="button"
+           aria-label="Wilayah Oriental: Sumatra, Jawa, Kalimantan, dan Bali" style="fill:oklch(74% 0.10 195)">
+          <ellipse cx="150" cy="120" rx="92" ry="27" transform="rotate(-40 150 120)"/>
+          <ellipse cx="352" cy="128" rx="84" ry="62" transform="rotate(-6 352 128)"/>
+          <ellipse cx="232" cy="234" rx="74" ry="17" transform="rotate(-7 232 234)"/>
+          <ellipse cx="330" cy="241" rx="13" ry="9"/>
+        </g>
+
+        <g class="zone" data-zone="peralihan" data-on="true" tabindex="0" role="button"
+           aria-label="Wilayah Peralihan atau Wallacea: Sulawesi, Nusa Tenggara, dan Maluku" style="fill:oklch(79% 0.11 78)">
+          <ellipse cx="472" cy="142" rx="24" ry="54" transform="rotate(12 472 142)"/>
+          <ellipse cx="512" cy="164" rx="28" ry="13" transform="rotate(-26 512 164)"/>
+          <ellipse cx="392" cy="250" rx="13" ry="8"/>
+          <ellipse cx="422" cy="256" rx="12" ry="8"/>
+          <ellipse cx="450" cy="262" rx="11" ry="7"/>
+          <ellipse cx="478" cy="266" rx="10" ry="7"/>
+          <ellipse cx="542" cy="152" rx="10" ry="15"/>
+          <ellipse cx="560" cy="126" rx="9" ry="13"/>
+          <ellipse cx="556" cy="196" rx="9" ry="13"/>
+        </g>
+
+        <g class="zone" data-zone="australis" data-on="true" tabindex="0" role="button"
+           aria-label="Wilayah Australis: Papua dan pulau di sekitarnya" style="fill:oklch(74% 0.10 152)">
+          <ellipse cx="622" cy="140" rx="30" ry="23" transform="rotate(-14 622 140)"/>
+          <ellipse cx="694" cy="168" rx="94" ry="52" transform="rotate(-9 694 168)"/>
+        </g>
+
+        <g data-garis="wallace">
+          <path d="M448 26 C 446 110 440 150 404 196 C 374 232 358 262 358 396"
+                fill="none" stroke="oklch(35% 0.02 250)" stroke-width="2.4" stroke-dasharray="9 7"/>
+          <text x="392" y="20" font-size="13" font-weight="700" fill="oklch(30% 0.02 250)" text-anchor="middle">Garis Wallace</text>
+        </g>
+        <g data-garis="weber">
+          <path d="M580 26 C 586 128 594 258 584 396"
+                fill="none" stroke="oklch(35% 0.02 250)" stroke-width="2.4" stroke-dasharray="3 6"/>
+          <text x="606" y="20" font-size="13" font-weight="700" fill="oklch(30% 0.02 250)" text-anchor="middle">Garis Weber</text>
+        </g>
+
+        <g font-size="13.5" font-weight="600" fill="oklch(26% 0.03 250)" text-anchor="middle" pointer-events="none">
+          <text x="128" y="124">Sumatra</text>
+          <text x="352" y="132">Kalimantan</text>
+          <text x="232" y="238">Jawa</text>
+          <text x="470" y="82">Sulawesi</text>
+          <text x="436" y="296">Nusa Tenggara</text>
+          <text x="540" y="240">Maluku</text>
+          <text x="694" y="172">Papua</text>
+        </g>
+      </svg>
+
+      <div class="map-legend">
+        <span class="lg"><span class="sw" style="background:oklch(74% 0.10 195)"></span>Wilayah Oriental</span>
+        <span class="lg"><span class="sw" style="background:oklch(79% 0.11 78)"></span>Wilayah Peralihan</span>
+        <span class="lg"><span class="sw" style="background:oklch(74% 0.10 152)"></span>Wilayah Australis</span>
+        <span class="lg" style="color:oklch(35% 0.02 250)"><span class="lg-line"></span>Garis Wallace</span>
+        <span class="lg" style="color:oklch(35% 0.02 250)"><span class="lg-line" style="border-top-style:dotted"></span>Garis Weber</span>
+      </div>
+    </div>
+
+    <div class="card" id="peta-panel" style="margin-top:20px" aria-live="polite">
+      <h2 id="peta-nama" style="font-size:1.15rem">Wilayah Oriental</h2>
+      <p class="muted" style="font-size:14px"><b>Meliputi:</b> <span id="peta-pulau"></span></p>
+      <p id="peta-ciri"></p>
+      <p class="muted" style="font-size:14.5px"><b>Contoh fauna:</b> <span id="peta-contoh"></span></p>
+      <p class="muted" style="font-size:14.5px"><b>Flora:</b> <span id="peta-flora"></span></p>
+      <div class="card-foot">
+        <button class="btn btn-primary btn-sm" type="button" id="peta-ke-latihan">
+          <i class="ph ph-exam" aria-hidden="true"></i>Latihan topik ini
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div>
+      <p class="ftr-name">Geosfer</p>
+      <p class="ftr-note">Hub belajar Geografi untuk SMA dan MA, mengikuti Kurikulum Merdeka fase E dan fase F.</p>
+    </div>
+    <nav class="ftr-links" aria-label="Tautan kaki">
+      <a href="modul.html">Modul</a>
+      <a href="latihan.html">Latihan</a>
+      <a href="progres.html">Progres</a>
+      <a href="glosarium.html">Glosarium</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<nav class="tabbar" aria-label="Navigasi bawah">
+  <ul>
+    <li><a data-nav="beranda" href="index.html"><i class="ph ph-house" aria-hidden="true"></i>Beranda</a></li>
+    <li><a data-nav="modul" href="modul.html"><i class="ph ph-squares-four" aria-hidden="true"></i>Modul</a></li>
+    <li><a data-nav="latihan" href="latihan.html"><i class="ph ph-exam" aria-hidden="true"></i>Latihan</a></li>
+    <li><a data-nav="progres" href="progres.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Progres</a></li>
+    <li><a data-nav="glosarium" href="glosarium.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Glosarium</a></li>
+  </ul>
+</nav>
+
+<script src="assets/app.js"></script>
+<script src="assets/map.js"></script>
+</body>
+</html>
